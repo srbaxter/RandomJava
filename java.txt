@@ -1,0 +1,402 @@
+JAVA IS PASS-BY-VALUE
+	all object references are still passed by value (copy of object made and passed to a function, copy is again copied back to original passed object on return)
+	however, technically working with references to data rather than the actual data
+
+SHOULD CREATE YOUR OWN TOSTRING METHOD IN EVERY CLASS
+
+java = object-oriented, robust, multithreaded, dynamic
+classes start with capital letter and should match file name
+class = unit of code that is basic building block of the program
+method = program unit that represents an action or computation
+statement = executable code that represents a complete command
+void = method executes statements but doesn't produce values
+
+string literals = strings = "blah blah" and System.out.println("blah blah");
+identifier = name given to an entity like a class or method (numStudents, multiply)
+	must start with a letter. _ and $ considered letters
+	illegal = 2+2, hi there, hi-There, 2by4
+	legal = two_plus, _count, $2donuts, MAX_COUNT, first, TwoBy4
+
+literals/literal values = 42, 28.9
+
+Javadoc comments /** */
+
+syntax errors = bad grammar (missed semicolon, misspellings)
+logic errors = bugs, produce wrong output
+runtime errors = stops execution, infinite loop, 1/0
+
+procedural decomposition = divide overall action into series of small actions
+
+static method = block of statements that are given a name, units of procedural decomposition
+	public static void drawBox() {}
+	can go in any order (main can go at top or bottom - doesn't matter)
+method call = command to execute another method
+flow of control = order in which statements are executed (jumps to appropriate static methods when needed)
+
+data type = category of data values (int)
+primitive types = 8 types:
+	fundamental:
+		boolean
+		int (ntegers/whole numbers) = stored exactly
+		char
+		double (real numbers) = stored as approximations with limited number of digits, scientific notation
+	byte
+	float
+	long
+	short
+
+precedence = binding power of operators to group parts of an expression (2+3*4)
+ints are always converted to doubles when calculating if one is already a double
+	cast = convert from one to another (int) 4.75 = 4 or (int)(4.2/.2)
+	int gets promoted to a double
+
+variables = memory location with a name and type that stores a value, store primitive data, numberOfDigits
+declaration = request to set aside a new variable with a name and type
+	double height;
+	double height = 70, weight = 180, bmi;
+
+5 + "hello" + 7 + 6   =   "5hello76"
+number % 10 gets the last number
+
+control structure = syntactic structure that controls other statements (for, while, if)
+i = control variable
+
+local variable = inside methods and only available to that method
+	localizing variables leads to some duplication but more security
+
+class constant = named value that can't be changed. can be accessed anywhere
+	public static final int LINES = 5;
+
+formal parameter = appears inside () in header of method and used to generalize method's behavior
+	public static void writeSpaces(int number) {}
+actual parameter = specific value that appears inside parentheses in method call
+	writeSpaces(10);
+
+overloading = having 1+ methods with the same name but different method signatures
+	box(2, 5) and box()
+	method signatures = name of method with number and type of parameters
+
+
+object = programming entity that contains state (data) and behavior (methods)	
+immutable object = object whose value can't change
+class = category or type of object
+	String s = "hello";
+	s.length();
+	s.charAt(1);  = 'e'
+	s.substrin(0, 4); = 'hell' (2nd value is one past the char you want)
+	s.endsWith("o") = true
+	s = s.toLowerCase();
+	s.equals("hello") = true
+	s.equalsIgnoreCase("hello") = true
+	s == "hello" = error/wrong output
+		== checks if strings are exactly the same object while .equals checks if same value
+
+constructor = method that creates and initalizes an object
+	Scanner console = new Scanner(System.in);
+	int n = console.nextInt();
+	console.next() = return next token as String
+token = single element of input (1 word or number) separated by whitespace
+
+import declaration = request to access a specific Java package
+package = collection of related Java classes
+	import java.util.*;
+
+if (Math.abs(double1 - double2) <= .001) {} = test equality of doubles due to roundoff error
+Strings are objects, chars are primitives
+	chars are really integers
+		char let = 'a' + 2; = 'c'
+		int code = 66;
+		char grade = (char)code; = 'B'
+
+
+int x = 38, y = -152;
+System.out.printf("location: (%d, %d)\n", x, y);
+%d = ints
+%f = doubles
+%s = String
+%10.2f = right aligned double with 10 space field and 2 decimal places
+%-9d = left aligned int with 9 space field
+
+
+
+exceptions are objects
+if (n < 0) {
+	throw new IllegalArgumentException("negative number");
+}
+
+
+
+robust = ability of program to execute even when presented with illegal data
+cohesion = responsibilities of a method or process are closely related
+	want high cohesion
+coupling = two methods or processes rigidly depend on each other
+	want low coupling
+chaining = chain of several methods call each other without returning the overall flow of control to main
+	want low chaining
+encapsulation = hiding implementation detailis of an object from clients of object
+	private int x;
+	need to use getters and setters because of this
+abstraction = focus on essential properties rather than internal details
+polymorphism = ability for same code to be used with different types of objects and for the code to behave differently based on the type
+	Employee ed = new Secretary(); // Secretary object
+	((Secretary) ed).takeDictation("hi"); //call a Secretary method 
+
+
+Math.random() is between 0.0 & 1.0 
+or use Random r = new Random();
+	r.nextInt(10) + 1    =  random number from 1-10
+
+fencepost loop = 11 posts for 100 yars
+System.out.print(1);
+for (int i = 2; i <= 10; i++) {
+	System.out.print(", " + i);
+}
+System.out.println();
+
+
+sentinel = special value that signals end of input
+logical operators = &&, ||, and !
+flags = record error conditions or signal completion
+assertion = declarative sentence that is true or false
+
+
+requires import java.io.*;
+make a file
+File f = new File("hamlet.txt");
+
+
+read a file
+Scanner input = new Scanner(new File("hamlet.txt"));
+	checked exception = exception that must be caught where it could be generated
+		include throws clause in method header or use try/catch statement
+Scanner keeps track of the position of the input cursor (can't have it read a file with the same Scanner multiple times - it won't start back at the beginning)
+print and println are part of PrintStream class
+writes to a file
+	PrintStream output = new PrintStream(new File("results.txt"));
+	output.println("hi");
+
+array = indexed structure that holds multiple values of the same type, an object
+	int[] numbers = new int[size];
+	int[] n = {20, 25, 40};
+	for (int i = 0; i < numbers.length; i++) - strings are .length() and arrays .length. last element at .length - 1
+		list[i] = blah
+	}
+	for (int i = 0; i < (numbers.length - 1) / 2; i++) { //middle of array
+
+	}
+
+buffer overflow = program writes data beyond the bounds of the buffer
+
+for-each loop - doesn't keep track of array's elements (can't call i)
+for (int i = 0; i < temps.length; i++) {
+	if (temps[i] > average) {
+		above++;
+	}
+}
+can become
+for (int i : temps) {
+	if (i > average) {
+		above++;
+	}
+}
+
+Arrays class (array limitations and fixes)
+	can't change size of an array b/c allocated as contiguous block of memory - can copy to new array
+		int[] newData = Arrays.copyOf(data, 2*data.length); - make array twice as big and include old array's elements
+	can't print array with print statement. have to format to a string
+		Arrays.toString(numbers);
+	can't compare arrays for equality
+		int[] data1 = {1, 1, 3};
+		int[] data2 = {1, 1, 3};
+		if(Arrays.equals(data1, data2)) {
+			blah
+		}
+	Arrays.sort(array); - rearrange elements so they appear in increasing order
+	Arrays.toString(array); - convert array to String format [17, 3, 5]
+
+null = signifies no object
+
+multidimensional array
+	int[][] temps = new int[3][5];
+	String s = Arraysl.deepToString(temps);
+jagged array
+	int[][] jagged = new int[3][]; // 3 rows
+	jagged[0] = new int[2]; //row 1, 2 elements
+	jagged[1] = new int[4]; //row 2, 4 elements
+
+
+object = entity with state and behavior
+field = variable inside object that's part of internal state
+instance method = method in object that operates on object
+implicit parameter = object referenced during an instance method call
+mutator = instance method that modifies object's internal state
+accessor = instance method that provides info about state of object without modifying it
+class invariant = assertion about an object's state that is true for object's lifetime
+
+	public class Point {
+		int x; // fields
+		int y;
+
+		public void translate(int dx, int dy) {
+		//instance method, & mutator
+		x += dx; //implicit parameter, affects p1 (Point)
+		}
+	}
+
+
+	public Point(int x, int y) {
+	// constructor
+		this.x = x;
+	}
+
+this = refer to implicit parameter inside a class
+
+//encapssulation example requiring getter
+private int x;
+public int getX() {
+	return x;
+}
+public void setLocation(int newX) {
+	this.x = newX;
+}
+
+
+
+inheritance, is-a relationship, 
+public class Secretary extends Employee {
+	//Secretary has all fields and methods of Employee plus extras
+	public double getSal() {
+		return super.getSalary() + 5000; //calls Employee's getSalary() and adds 5000 for Secretary's salary
+	}
+
+	public DivSec() {
+		super(symbol); //calls Employee's constructor
+	}
+}
+
+override = implement new version of a method to replace code inherited from superclass
+	just re-write the exact same method with new info
+	vs overloading = 1 class has multiple methods with same name but different parameters
+
+
+interface = a type that consists of a set of method declarations
+	has method headers without bodies
+	can't be instantiated
+	good for polymorphism
+	public interface Shape {
+		public double getArea();
+	}
+
+	public class Rectangle implements Shape {
+		public double getArea() {
+			return width * height;
+		}
+	}
+abstract method = method declared but not implemented like in an interface
+abstract class = class that can't be instantiated but serves as superclass to hold common code and declare abstract behavior
+	can't do new Class of abstract class (ShareAsset asset = new ShareAsset(); x)
+	can only extend 1 abstract class
+	public abstract class ShareAsset implements Asset {
+		public abstract double getValue();
+	}
+
+ArrayList = dynamiic structure with variable length, can store mixture of types
+	can add/remove values
+	shifts its size
+	overrides toString so automatically prints correctly
+	ArrayList<String> list = new ArrayList<String>();
+	list.add("blah");
+	list.add(1, "index 1");
+	list.remove(1); //removes index 1
+	list.size();
+	for (int i = 0; i < list.size(); i++) {
+		String s = list.get(i);
+	}
+	list.set(0, "hi"); //replace element at 0 with hi
+	list.clear(); //remove all elements
+	Collections.sort(list); //sorts an ArrayList
+
+while(input.hasNext()) {
+	String name = input.next();
+	if (!list.contains(name)) {
+		list.add(name);
+	}
+}
+
+
+compareTo compares strings alphabetically
+if (s1.compareTo(s2) < 0) {
+	// s1 less than s2
+}
+
+Collection = object that stores a group of other objects called elements
+	categorized by type of elements
+	ArrayList is a collection as is:
+		List
+		Stack
+		Queue
+		Set
+		Map
+
+
+LinkedList = collection that stores a list of elements in small object containers (nodes) that are linked together with references to prev and next node
+	easy to add to front of list quickly
+	less computationally intense
+	LinkedList<String> list = new LinkedList<String>();
+
+Iterator = object that allows efficient retrieval of the elements of a list in sequential order
+public static void removeEvenLength(LinkedList<String> list) {
+	Iterator<String> itr = list.iterator();
+	while (itr.hasNext()) {
+		String element = itr.next();
+		if (element % 2 == 0) {
+			itr.remove();
+		}
+	}
+}
+
+
+List<Integer> list = new LinkedList<Integer>(); //creates a LinkedList object but stores in List variable
+	good for polymorphism b/c parameter could take ArrayList or LinkedList
+	pg 692
+
+Collections.reverse(list);
+
+Set = collection with no duplicates (SSNs)
+	quick to search
+HashSet = elements are not ordered/sorted
+	
+Set<String> w = new HashSet<String>();
+while (in.hasNext()) {
+	String word = in.next();
+	word = w.toLowerCase();
+	w.add(word); //no duplicate checking needed
+}
+
+TreeSet = elements are sorted, must be used with comparable elements
+
+Map = collection that associates objects called keys with their values
+	Map<String, Double> salaryMap = new HashMap<String, Double>();
+	salaryMap.put("Hi", 10.0);
+	double jenSal = salaryMap.get("Jen");
+	if (salaryMap.containsKey(name)) {}
+	toString prints list {Jen=10.0, blah=5.0}
+
+prints all keys
+Set<Integer> ssnSet = ssnMap.keySet();
+for (int n : ssnSet) {
+	sysout n;
+}
+
+prints all values
+Collection<String> names = ssnMap.values(); //collection b/c might have duplicates
+for (String n : names) {
+	sysout n;
+}
+
+search/sort algs
+	binary 798
+	selection 805
+
+
+ListNodes pg 933
